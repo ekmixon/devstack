@@ -27,7 +27,7 @@ def load_images():
         if not filename.endswith('.tar.gz'):
             continue
         tarball = os.path.join(IMAGES_DIR, filename)
-        print('Loading Docker image from {}'.format(filename))
+        print(f'Loading Docker image from {filename}')
         check_call(['docker', 'load', '--input', tarball])
 
 
@@ -54,11 +54,26 @@ def load_volumes():
             path = path[:-1]
         tarball = volume['tarball']
         components = str(path.count('/'))
-        print('Loading volume from {}'.format(tarball))
-        check_call(['docker', 'run', '--rm', '--volumes-from', container_name,
-                    '-v', '{}:/backup'.format(VOLUMES_DIR), BACKUP_IMAGE,
-                    'tar', 'xzf', '/backup/{}'.format(tarball), '-C', path,
-                    '--strip-components', components])
+        print(f'Loading volume from {tarball}')
+        check_call(
+            [
+                'docker',
+                'run',
+                '--rm',
+                '--volumes-from',
+                container_name,
+                '-v',
+                f'{VOLUMES_DIR}:/backup',
+                BACKUP_IMAGE,
+                'tar',
+                'xzf',
+                f'/backup/{tarball}',
+                '-C',
+                path,
+                '--strip-components',
+                components,
+            ]
+        )
 
 
 if __name__ == "__main__":

@@ -43,15 +43,15 @@ def archive_repos(output_dir):
         script = f.read()
     prefix = r'https://github\.com/edx/'
     suffix = r'\.git'
-    repos = re.findall(r'{}[^\.]+{}'.format(prefix, suffix), script)
+    repos = re.findall(f'{prefix}[^\.]+{suffix}', script)
     dirs = [repo[len(prefix) - 1:1 - len(suffix)] for repo in repos if 'edx-themes' not in repo]
     dirs.append('devstack')
     repositories_dir = os.path.join(output_dir, 'repositories')
     cwd = os.getcwd()
     os.chdir(DEVSTACK_WORKSPACE)
     for directory in dirs:
-        print('Archiving {}'.format(directory))
-        output = os.path.join(repositories_dir, '{}.tar.gz'.format(directory))
+        print(f'Archiving {directory}')
+        output = os.path.join(repositories_dir, f'{directory}.tar.gz')
         check_output(['tar', 'czf', output, directory], stderr=STDOUT)
     os.chdir(cwd)
 
@@ -77,8 +77,8 @@ def process_compose_file(filename, output_dir):
         container_name = service['container_name']
         # Don't save the same image twice, like edxapp for lms and studio
         if image not in saved_images:
-            output = os.path.join(images_dir, '{}.tar'.format(service_name))
-            print('Saving image {}'.format(service_name))
+            output = os.path.join(images_dir, f'{service_name}.tar')
+            print(f'Saving image {service_name}')
             check_output(['docker', 'save', '--output', output, image],
                          stderr=STDOUT)
             check_output(['gzip', output], stderr=STDOUT)
@@ -97,13 +97,28 @@ def process_compose_file(filename, output_dir):
                 else:
                     volume_name = volume[1:].replace('/', '_')
                     volume_path = volume
-                tarball = '{}.tar.gz'.format(volume_name)
+                tarball = f'{volume_name}.tar.gz'
                 volume_list.append({'container': container_name,
                                     'path': volume_path, 'tarball': tarball})
-                print('Saving volume {}'.format(volume_name))
-                check_output(['docker', 'run', '--rm', '--volumes-from', container_name, '-v',
-                             '{}:/backup'.format(volumes_dir), BACKUP_IMAGE, 'tar', 'czf',
-                             '/backup/{}'.format(tarball), volume_path], stderr=STDOUT)
+                print(f'Saving volume {volume_name}')
+                check_output(
+                    [
+                        'docker',
+                        'run',
+                        '--rm',
+                        '--volumes-from',
+                        container_name,
+                        '-v',
+                        f'{volumes_dir}:/backup',
+                        BACKUP_IMAGE,
+                        'tar',
+                        'czf',
+                        f'/backup/{tarball}',
+                        volume_path,
+                    ],
+                    stderr=STDOUT,
+                )
+
     print('Saving image alpine')
     output = os.path.join(images_dir, 'alpine.tar')
     check_output(['docker', 'save', '--output', output, BACKUP_IMAGE], stderr=STDOUT)
