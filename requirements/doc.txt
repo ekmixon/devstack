@@ -13,7 +13,7 @@ cached-property==1.5.2    # via -r requirements/base.txt, docker-compose
 certifi==2020.12.5        # via -r requirements/base.txt, requests
 cffi==1.14.4              # via -r requirements/base.txt, bcrypt, cryptography, pynacl
 chardet==4.0.0            # via -r requirements/base.txt, doc8, requests
-cryptography==3.2.1       # via -r requirements/base.txt, paramiko
+cryptography==41.0.2       # via -r requirements/base.txt, paramiko
 distro==1.5.0             # via -r requirements/base.txt, docker-compose
 doc8==0.8.1               # via -r requirements/doc.in
 docker-compose==1.27.4    # via -r requirements/base.txt
