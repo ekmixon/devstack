@@ -29,7 +29,7 @@ jinja2==2.11.2            # via sphinx
 jsonschema==3.2.0         # via -r requirements/base.txt, docker-compose
 markupsafe==1.1.1         # via jinja2
 packaging==20.8           # via bleach, sphinx
-paramiko==2.7.2           # via -r requirements/base.txt, docker
+paramiko==3.4.0           # via -r requirements/base.txt, docker
 pbr==5.5.1                # via stevedore
 pycparser==2.20           # via -r requirements/base.txt, cffi
 pygments==2.7.3           # via doc8, readme-renderer, sphinx
