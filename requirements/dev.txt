@@ -25,7 +25,7 @@ importlib-metadata==2.1.1  # via -r requirements/base.txt, jsonschema, pluggy, t
 importlib-resources==3.2.1  # via virtualenv
 jsonschema==3.2.0         # via -r requirements/base.txt, docker-compose
 packaging==20.8           # via tox
-paramiko==2.7.2           # via -r requirements/base.txt, docker
+paramiko==3.4.0           # via -r requirements/base.txt, docker
 pip-tools==5.5.0          # via -r requirements/pip-tools.txt
 pluggy==0.13.1            # via tox
 py==1.10.0                # via tox
