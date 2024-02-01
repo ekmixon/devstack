@@ -10,7 +10,7 @@ cached-property==1.5.2    # via docker-compose
 certifi==2020.12.5        # via requests
 cffi==1.14.4              # via bcrypt, cryptography, pynacl
 chardet==4.0.0            # via requests
-cryptography==3.2.1       # via paramiko
+cryptography==42.0.2       # via paramiko
 distro==1.5.0             # via docker-compose
 docker-compose==1.27.4    # via -r requirements/base.in
 docker[ssh]==4.4.1        # via docker-compose
