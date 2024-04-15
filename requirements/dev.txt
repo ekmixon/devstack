@@ -20,7 +20,7 @@ docker[ssh]==4.4.1        # via -r requirements/base.txt, docker-compose
 dockerpty==0.4.1          # via -r requirements/base.txt, docker-compose
 docopt==0.6.2             # via -r requirements/base.txt, docker-compose
 filelock==3.0.12          # via tox, virtualenv
-idna==2.10                # via -r requirements/base.txt, requests
+idna==3.7                # via -r requirements/base.txt, requests
 importlib-metadata==2.1.1  # via -r requirements/base.txt, jsonschema, pluggy, tox, virtualenv
 importlib-resources==3.2.1  # via virtualenv
 jsonschema==3.2.0         # via -r requirements/base.txt, docker-compose
