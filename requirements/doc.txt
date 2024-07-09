@@ -56,7 +56,7 @@ texttable==1.6.3          # via -r requirements/base.txt, docker-compose
 urllib3==1.26.2           # via -r requirements/base.txt, requests
 webencodings==0.5.1       # via bleach
 websocket-client==0.57.0  # via -r requirements/base.txt, docker, docker-compose
-zipp==1.2.0               # via -r requirements/base.txt, importlib-metadata
+zipp==3.19.1               # via -r requirements/base.txt, importlib-metadata
 
 # The following packages are considered to be unsafe in a requirements file:
 # setuptools
