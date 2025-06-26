@@ -53,7 +53,7 @@ sphinxcontrib-qthelp==1.0.3  # via sphinx
 sphinxcontrib-serializinghtml==1.1.4  # via sphinx
 stevedore==1.32.0         # via doc8
 texttable==1.6.3          # via -r requirements/base.txt, docker-compose
-urllib3==1.26.2           # via -r requirements/base.txt, requests
+urllib3==2.5.0           # via -r requirements/base.txt, requests
 webencodings==0.5.1       # via bleach
 websocket-client==0.57.0  # via -r requirements/base.txt, docker, docker-compose
 zipp==1.2.0               # via -r requirements/base.txt, importlib-metadata
